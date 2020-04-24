@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, StyleSheet } from 'react-native';
 
 import AuthContext from '../../src/contexts/auth';
 
@@ -11,7 +11,7 @@ const Routes: React.FC = () => {
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <View style={styles.container}>
         <ActivityIndicator size="large" color="#999" />
       </View>
     );
@@ -19,5 +19,13 @@ const Routes: React.FC = () => {
 
   return signed ? <AppRoutes /> : <AuthRoutes />;
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+})
 
 export default Routes;
